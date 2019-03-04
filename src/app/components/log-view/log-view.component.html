@@ -1,0 +1,36 @@
+<mat-form-field>
+  <input matInput (keyup)="applyFilterThing($event.target.value)" placeholder="Thing">
+</mat-form-field>
+<mat-form-field>
+  <input matInput (keyup)="applyFilterLogLevel($event.target.value)" placeholder="LogLevel">
+</mat-form-field>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="thing">
+    <th mat-header-cell *matHeaderCellDef> Thing </th>
+    <td mat-cell *matCellDef="let element"> {{element.thing}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="tag">
+    <th mat-header-cell *matHeaderCellDef> Tag </th>
+    <td mat-cell *matCellDef="let element"> {{element.tag}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="loglevel">
+    <th mat-header-cell *matHeaderCellDef> Loglevel </th>
+    <td mat-cell *matCellDef="let element"> {{element.loglevel}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="message">
+    <th mat-header-cell *matHeaderCellDef> Message </th>
+    <td mat-cell *matCellDef="let element"> {{element.message}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
