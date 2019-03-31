@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { Thing } from 'src/app/thing';
 import { DataServiceService } from 'src/app/services/data-service.service';
+import { Router } from '@angular/router';
 
 
 
@@ -28,7 +29,7 @@ const ELEMENT_DATA = [
 
 export class ThingOverviewComponent implements OnInit {
 
-  constructor(private dataService: DataServiceService) { }
+  constructor(private router: Router, private dataService: DataServiceService) { }
 
   public thingList: Thing[];
   displayedColumns: string[] = ['thing', 'sensor', 'actor', 'loglevel', 'ip', 'lrtime', 'ping'];
@@ -45,6 +46,12 @@ export class ThingOverviewComponent implements OnInit {
     });
     // this.thingList = ELEMENT_DATA;
   }
+
+  goToDetails(row) {
+    //console.log(row);
+    this.router.navigate(['/thing-detail'], {queryParams: {ip: row.ip}});
+  }
+
   sortThingList() {
     this.thingList.sort((t1, t2) => 0 - (t1.thing < t2.thing ? 1 : -1));
   }

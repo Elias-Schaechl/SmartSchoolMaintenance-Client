@@ -12,7 +12,7 @@ export class LogViewComponent implements OnInit {
 
   logLimit = 100;
   public logList: Logs[] = [];
-  displayedColumns: string[] = ['thing', 'id', 'tag', 'loglevel', 'message'];
+  displayedColumns: string[] = ['thing', 'id', 'tag', 'loglevel', 'time', 'message'];
   dataSource = new MatTableDataSource(this.logList);
   private filterThing = '';
   private filterLogLevel = '';
@@ -39,9 +39,16 @@ export class LogViewComponent implements OnInit {
     this.updateData();
   }
 
-  addLogToList(log: string) {
+  addLogToList(nlog: string) {
     try {
-      this.logList.unshift(JSON.parse(log));
+      const log: Logs = JSON.parse(nlog);
+      log.time = Date.now();
+      if(this.logList.length >= 1000){
+        this.logList.pop();
+        this.logList.unshift(log);
+      } else {
+        this.logList.unshift(log);
+      }
       this.dataSource = new MatTableDataSource(this.logList);
       this.updateData();
     } catch (error) {}

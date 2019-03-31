@@ -1,6 +1,4 @@
-<mat-form-field>
-  <input matInput (keyup)="applyFilterThing($event.target.value)" placeholder="Thing">
-</mat-form-field>
+
 <mat-form-field>
   <input matInput (keyup)="applyFilterLogLevel($event.target.value)" placeholder="LogLevel">
 </mat-form-field>
@@ -24,6 +22,11 @@
   <ng-container matColumnDef="loglevel">
     <th mat-header-cell *matHeaderCellDef> Loglevel </th>
     <td mat-cell *matCellDef="let element"> {{element.loglevel}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="time">
+    <th mat-header-cell *matHeaderCellDef> Time </th>
+    <td mat-cell *matCellDef="let element"> {{element.time | date: 'HH:mm:ss'}} </td>
   </ng-container>
 
   <ng-container matColumnDef="message">

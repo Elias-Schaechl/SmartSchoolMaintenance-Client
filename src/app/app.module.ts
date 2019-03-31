@@ -7,20 +7,23 @@ import { ThingOverviewComponent } from './components/thing-overview/thing-overvi
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { LogViewComponent } from './components/log-view/log-view.component';
+import { ThingDetailComponent } from './components/thing-detail/thing-detail.component';
 
 
 
 
 const appRoutes: Routes = [
   { path: 'thing-list', component: ThingOverviewComponent },
-  { path: 'log-view', component: LogViewComponent }
+  { path: 'log-view', component: LogViewComponent },
+  { path: 'thing-detail', component: ThingDetailComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     ThingOverviewComponent,
-    LogViewComponent
+    LogViewComponent,
+    ThingDetailComponent
   ],
   imports: [
     BrowserModule,

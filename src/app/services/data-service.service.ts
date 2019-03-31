@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Thing } from '../thing';
 import { webSocket } from 'rxjs/webSocket';
 import { Logs } from 'src/app/logs';
+import { strictEqual } from 'assert';
 //import * as SimpleWS from 'simple-websocket';
 
 @Injectable({
@@ -16,15 +17,12 @@ export class DataServiceService {
   private addLog;
 
   constructor(private http: HttpClient) {
+    console.log('Constructor of DataService() ran...');
     this.subject = webSocket({
       url: 'ws://localhost:8080',
       deserializer: (msg) => msg
-  });
-  }
-
-  connectToWS(target) {
-
-    this.addLog = target;
+    });
+    this.addLog = this.dummyFunc;
     this.subject.subscribe(
       (msg) => {
           const log: Logs = msg.data;
@@ -35,8 +33,27 @@ export class DataServiceService {
     );
   }
 
+  connectToWS(target) {
+    this.addLog = target;
+  }
+
   getThings(): Observable<Thing[]> {
     console.log('getThigs ran...');
     return this.http.get<Thing[]>('http://localhost:3000/things');
   }
+
+  getThingState(ip) {
+    console.log('getThigState ran...');
+    return this.http.get('http://localhost:3000/state?ip=' + ip, {responseType: 'text'});
+  }
+
+  resetThing(ip) {
+    console.log('resetThig ran...');
+    return this.http.get('http://localhost:3000/reset?ip=' + ip,  {responseType: 'text'});
+  }
+
+  dummyFunc(a: string): any {
+  }
+
+
 }

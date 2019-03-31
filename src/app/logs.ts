@@ -3,5 +3,6 @@ export interface Logs {
     thing: string;
     tag: string;
     loglevel: string;
+    time: number;
     message: string;
 }
