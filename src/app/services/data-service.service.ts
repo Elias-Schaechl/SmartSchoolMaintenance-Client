@@ -47,9 +47,14 @@ export class DataServiceService {
     return this.http.get('http://localhost:3000/state?ip=' + ip, {responseType: 'text'});
   }
 
-  resetThing(ip) {
+  restartThing(ip) {
     console.log('resetThig ran...');
     return this.http.get('http://localhost:3000/reset?ip=' + ip,  {responseType: 'text'});
+  }
+
+  resetThing(ip) {
+    console.log('resetThig ran...');
+    return this.http.get('http://localhost:3000/factory?ip=' + ip,  {responseType: 'text'});
   }
 
   dummyFunc(a: string): any {

@@ -1,0 +1,15 @@
+p{
+    text-align: right;
+    width: 100%;
+    margin-right: 15px;
+}
+.contentp {
+    margin-left: 15px;
+    text-align: left;
+}
+.config{
+    height: 100%;
+}
+button{
+    width: 100%;
+}

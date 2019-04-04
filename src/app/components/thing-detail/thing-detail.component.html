@@ -1,5 +1,34 @@
-<p>
+<h4>
   Thing Detail for {{ip}}
-</p>
-<button mat-raised-button (click)="resetThing()">Reset Thing</button>
-
+</h4>
+<mat-grid-list cols="3" rowHeight="4:1">
+  <mat-grid-tile rowspan="4">
+    <p class='config'>
+      {{configString}}
+    </p>
+  </mat-grid-tile>
+  <mat-grid-tile>
+      <p>Thing name:</p>
+  </mat-grid-tile>
+  <mat-grid-tile>
+      <p class="contentp">{{config.thingname}}</p>
+  </mat-grid-tile>
+  <mat-grid-tile>
+      <p>Signal strength:</p>
+  </mat-grid-tile>
+  <mat-grid-tile>
+      <p class="contentp">{{state.wifiStrength}}</p>
+  </mat-grid-tile>
+  <mat-grid-tile>
+      <p>Mac address:</p>
+  </mat-grid-tile>
+  <mat-grid-tile>
+      <p class="contentp">{{state.espMacAddress}}</p>
+  </mat-grid-tile>
+  <mat-grid-tile>
+      <button mat-raised-button color="primary" (click)="restartThing()">Restart Thing</button>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <button mat-raised-button color="warn" (click)="resetThing()">Reset Thing</button>
+  </mat-grid-tile>
+</mat-grid-list>
