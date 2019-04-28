@@ -28,6 +28,13 @@ export class ThingDetailComponent implements OnInit {
     'udploggerport': ''
     };
   private configString = '';
+  private thingname = '';
+  private server = '';
+  private port = '';
+  private user = '';
+  private password = '';
+  private udploggerip = '';
+  private udploggerport = '';
 
 
   constructor(private route: ActivatedRoute, private dataService: DataServiceService) { }
@@ -64,5 +71,54 @@ export class ThingDetailComponent implements OnInit {
     });
     console.log(this.state);
   }
+
+
+  changeThingname() {
+    console.log(this.thingname);
+    this.dataService.updateConfig(this.ip, 'thingname', this.thingname).subscribe(data => {
+      console.log(data);
+    });
+  }
+
+  changeServer() {
+    console.log(this.server);
+    this.dataService.updateConfig(this.ip, 'server', this.server).subscribe(data => {
+      console.log(data);
+    });
+  }
+
+  changePort() {
+    console.log(this.port);
+    this.dataService.updateConfig(this.ip, 'server', this.port).subscribe(data => {
+      console.log(data);
+    });
+  }
+  changeUser() {
+    console.log(this.user);
+    this.dataService.updateConfig(this.ip, 'server', this.user).subscribe(data => {
+      console.log(data);
+    });
+  }
+  changePassword() {
+    console.log(this.password);
+    this.dataService.updateConfig(this.ip, 'server', this.password).subscribe(data => {
+      console.log(data);
+    });
+  }
+  changeUDPLoggerIp() {
+    console.log(this.udploggerip);
+    this.dataService.updateConfig(this.ip, 'server', this.udploggerip).subscribe(data => {
+      console.log(data);
+    });
+  }
+  changeUDPLoggerPort() {
+    console.log(this.udploggerport);
+    this.dataService.updateConfig(this.ip, 'server', this.udploggerport).subscribe(data => {
+      console.log(data);
+    });
+  }
+
+
+
 
 }

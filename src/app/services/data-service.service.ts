@@ -57,6 +57,13 @@ export class DataServiceService {
     return this.http.get('http://localhost:3000/factory?ip=' + ip,  {responseType: 'text'});
   }
 
+  updateConfig(ip, key, value) {
+    console.log('changeConfig ran...');
+    const query = `http://localhost:3000/setconfig?ip=${ip}&key=${key}&value=${value}`;
+    console.log(query);
+    return this.http.get(query,  {responseType: 'text'});
+  }
+
   dummyFunc(a: string): any {
   }
 

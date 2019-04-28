@@ -1,7 +1,19 @@
-
 <mat-form-field>
-  <input matInput (keyup)="applyFilterLogLevel($event.target.value)" placeholder="LogLevel">
-</mat-form-field>
+    <mat-label>Thing</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let thing of things" [value]="thing">
+        {{thing}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+<mat-form-field>
+    <mat-label>Loglevel</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let level of levels" [value]="level">
+        {{level}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
   <ng-container matColumnDef="thing">

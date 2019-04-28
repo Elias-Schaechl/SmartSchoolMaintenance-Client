@@ -1,34 +1,131 @@
 <h4>
   Thing Detail for {{ip}}
 </h4>
-<mat-grid-list cols="3" rowHeight="4:1">
-  <mat-grid-tile rowspan="4">
-    <p class='config'>
-      {{configString}}
-    </p>
+<mat-grid-list cols="6" rowHeight="6:1">
+
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile>
+      <p>Thing Name:</p>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2">
+    <mat-form-field>
+      <input matInput placeholder={{config.thingname}} [(ngModel)]="thingname">
+    </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile>
-      <p>Thing name:</p>
+    <button mat-raised-button  (click)="changeThingname()">Change</button>
+  </mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile>
+      <p>Server:</p>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2">
+    <mat-form-field>
+      <input matInput placeholder={{config.server}} [(ngModel)]="server">
+    </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile>
-      <p class="contentp">{{config.thingname}}</p>
+    <button mat-raised-button  (click)="changeServer()">Change</button>
+  </mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile>
+      <p>Port:</p>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2">
+    <mat-form-field>
+      <input matInput placeholder={{config.port}} [(ngModel)]="port">
+    </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile>
-      <p>Signal strength:</p>
+    <button mat-raised-button  (click)="changePort()">Change</button>
+  </mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile>
+      <p>User:</p>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2">
+    <mat-form-field>
+      <input matInput placeholder={{config.user}} [(ngModel)]="user">
+    </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile>
-      <p class="contentp">{{state.wifiStrength}}</p>
+    <button mat-raised-button  (click)="changeUser()">Change</button>
+  </mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile>
+      <p>Password:</p>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2">
+    <mat-form-field>
+      <input matInput placeholder={{config.password}} [(ngModel)]="password">
+    </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile>
-      <p>Mac address:</p>
+    <button mat-raised-button  (click)="changePassword()">Change</button>
+  </mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile>
+      <p>UDP Logger Ip:</p>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2">
+    <mat-form-field>
+      <input matInput placeholder={{config.udploggerip}} [(ngModel)]="udploggerip">
+    </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile>
-      <p class="contentp">{{state.espMacAddress}}</p>
+    <button mat-raised-button  (click)="changeUDPLoggerIp()">Change</button>
+  </mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile>
+      <p>UDP Logger Port:</p>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2">
+    <mat-form-field>
+      <input matInput placeholder={{config.udploggerport}} [(ngModel)]="udploggerport">
+    </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile>
-      <button mat-raised-button color="primary" (click)="restartThing()">Restart Thing</button>
+    <button mat-raised-button  (click)="changeUDPLoggerPort()">Change</button>
   </mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+  
+  <mat-grid-tile></mat-grid-tile>
   <mat-grid-tile>
-    <button mat-raised-button color="warn" (click)="resetThing()">Reset Thing</button>
+    <p>Signal Strength:</p>
   </mat-grid-tile>
+  <mat-grid-tile colspan="2">
+    <p class="contentp">{{state.wifiStrength}}</p>
+  </mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile>
+    <p>Mac Address:</p>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2">
+    <p class="contentp">{{state.espMacAddress}}</p>
+  </mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile colspan="2">
+    <button mat-raised-button color="primary" (click)="restartThing()">Restart Thing</button>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2">
+  <button mat-raised-button color="warn" (click)="resetThing()">Reset Thing</button>
+  </mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
 </mat-grid-list>

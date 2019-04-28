@@ -4,8 +4,7 @@ p{
     margin-right: 15px;
 }
 .contentp {
-    margin-left: 15px;
-    text-align: left;
+    text-align: center;
 }
 .config{
     height: 100%;
@@ -13,3 +12,6 @@ p{
 button{
     width: 100%;
 }
+.mat-raised-button:hover {
+    background-color: lightgray;
+  }

@@ -17,6 +17,11 @@ export class LogViewComponent implements OnInit {
   private filterThing = '';
   private filterLogLevel = '';
 
+  public levels: string[] = [];
+  public level = '';
+  public things: string[] = [];
+  public thing = '';
+
   constructor(private dataService: DataServiceService) { }
 
   ngOnInit() {
@@ -43,7 +48,18 @@ export class LogViewComponent implements OnInit {
     try {
       const log: Logs = JSON.parse(nlog);
       log.time = Date.now();
-      if(this.logList.length >= 1000){
+      const level = log.loglevel;
+      const thing = log.thing;
+      if (this.levels.indexOf(level) < 0) {
+        this.levels.unshift(level);
+      }
+      if (this.things.indexOf(thing) < 0) {
+        this.things.unshift(thing);
+      }
+      if (this.level !== '' && level !== this.level || this.thing !== '' && thing !== this.thing) {
+        return;
+      }
+      if (this.logList.length >= 1000) {
         this.logList.pop();
         this.logList.unshift(log);
       } else {
