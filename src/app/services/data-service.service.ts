@@ -1,3 +1,4 @@
+import { ConfigService } from './config.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -15,11 +16,16 @@ export class DataServiceService {
   private subject;
   private socket;
   private addLog;
+  private wsurl;
+  private httpurl;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private configService: ConfigService) {
     console.log('Constructor of DataService() ran...');
+    this.httpurl = configService.getServerHttpUrl();
+    this.wsurl = configService.getServerWsUrl();
+
     this.subject = webSocket({
-      url: 'ws://localhost:8080',
+      url: this.wsurl,
       deserializer: (msg) => msg
     });
     this.addLog = this.dummyFunc;
@@ -39,27 +45,27 @@ export class DataServiceService {
 
   getThings(): Observable<Thing[]> {
     console.log('getThigs ran...');
-    return this.http.get<Thing[]>('http://localhost:3000/things');
+    return this.http.get<Thing[]>(this.httpurl + '/things');
   }
 
   getThingState(ip) {
     console.log('getThigState ran...');
-    return this.http.get('http://localhost:3000/state?ip=' + ip, {responseType: 'text'});
+    return this.http.get(this.httpurl + '/state?ip=' + ip, {responseType: 'text'});
   }
 
   restartThing(ip) {
     console.log('resetThig ran...');
-    return this.http.get('http://localhost:3000/reset?ip=' + ip,  {responseType: 'text'});
+    return this.http.get(this.httpurl + '/reset?ip=' + ip,  {responseType: 'text'});
   }
 
   resetThing(ip) {
     console.log('resetThig ran...');
-    return this.http.get('http://localhost:3000/factory?ip=' + ip,  {responseType: 'text'});
+    return this.http.get(this.httpurl + '/factory?ip=' + ip,  {responseType: 'text'});
   }
 
   updateConfig(ip, key, value) {
     console.log('changeConfig ran...');
-    const query = `http://localhost:3000/setconfig?ip=${ip}&key=${key}&value=${value}`;
+    const query = this.httpurl + `/setconfig?ip=${ip}&key=${key}&value=${value}`;
     console.log(query);
     return this.http.get(query,  {responseType: 'text'});
   }

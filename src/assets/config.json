@@ -1,0 +1,19 @@
+{
+    "title": "SmartSchoolMaintenance",
+    "udp":{
+        "broadcast_address":"192.168.43.255",
+        "broadcast_port":"4444",
+        "port":"41234",
+        "log_id":"*LG"
+    },
+    "http":{
+        "port":"3000"
+    },
+    "ws":{
+        "port":"8080"
+    },
+    "server":{
+        "httpurl":"http://localhost:3000",
+        "wsurl":"ws://localhost:8080"
+    }
+}

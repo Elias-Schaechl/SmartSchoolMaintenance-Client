@@ -1,3 +1,4 @@
+import { ConfigService } from './services/config.service';
 import { MaterialModule } from './material/material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -9,7 +10,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { LogViewComponent } from './components/log-view/log-view.component';
 import { ThingDetailComponent } from './components/thing-detail/thing-detail.component';
-
+import { APP_INITIALIZER } from '@angular/core';
 
 
 
@@ -34,7 +35,15 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    ConfigService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (config: ConfigService) => () => config.load(),
+      deps: [ConfigService],
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

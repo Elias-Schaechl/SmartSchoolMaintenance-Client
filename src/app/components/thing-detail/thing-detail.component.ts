@@ -65,7 +65,6 @@ export class ThingDetailComponent implements OnInit {
   }
 
   resetThing() {
-    return;
     this.dataService.resetThing(this.ip).subscribe(data => {
       console.log(JSON.stringify(data));
     });
